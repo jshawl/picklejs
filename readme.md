@@ -12,7 +12,7 @@ var p = pickle(d)
 var d = {everything: "is", awesome: "!"}
 var p = pickle(d)
 
-var d = function(){ return this }
+var d = function(){}
 var p = pickle(d)
 ```
 
