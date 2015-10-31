@@ -26,12 +26,6 @@ describe("pickle", function(){
       1,
       function(){},
       function named(a,b){ return a * b },
-      ["array","of", {
-        complex: "things",
-        jam: function(){
-	  console.log("yeah")
-	}
-      }]
     ]
     for( var i = 0; i < dataTypes.length; i++ ){
       p = pickle(dataTypes[i])
@@ -40,8 +34,20 @@ describe("pickle", function(){
 	expect(p.fromUrl()()).toEqual(dataTypes[i]())
       }else{
 	expect(p.fromUrl()).toEqual(dataTypes[i])
+	console.log(p.fromUrl(), dataTypes[i])
       }
     }
+  })
+  it("cannot handle nested functions", function(){
+      var data = ["array","of", {
+        complex: "things",
+        jam: function(){
+	  console.log("yeah")
+	}
+      }]
+      p = pickle(data)
+      p.toUrl()
+      expect(p.fromUrl()).not.toEqual(data)
   })
 
 })

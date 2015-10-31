@@ -5,7 +5,13 @@ function pickle( anything ){
         return anything.toString()
       }
       try {
-	var d = JSON.stringify(anything)	      
+	var d = JSON.stringify(anything, function(key, value){
+	  if(typeof value == "function"){
+	    return value.toString()
+	  } else {
+	    return value
+	  }
+	})	      
       } catch (e) {
 	console.error("Unable to pickle!",e,anything)
       }
