@@ -9,7 +9,7 @@ Pickle is a way to serialize JavaScript code and data.
 var d = [1,2,3]
 var p = pickle(d)
 
-var d = {everything: "is" awesome: "!"}
+var d = {everything: "is", awesome: "!"}
 var p = pickle(d)
 
 var d = function(){ return this }
