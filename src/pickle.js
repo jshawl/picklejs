@@ -17,11 +17,8 @@ function pickle( anything ){
       }
       return d
     },
-    base64Encode: function(){
-      return btoa(this.toString())		  
-    },
     toUrl: function(){
-      window.location.hash = this.base64Encode()	   
+      window.location.hash = btoa(this.toString())
     },
     fromUrl: function(){
       var string = window.location.hash.substr(1) 	     
